@@ -1,0 +1,3 @@
+com\camunda\demo\hello_world\CamundaBpmProcessApplication.class
+com\camunda\demo\hello_world\LoggerDelegate.class
+com\camunda\demo\hello_world\ProcessConstants.class

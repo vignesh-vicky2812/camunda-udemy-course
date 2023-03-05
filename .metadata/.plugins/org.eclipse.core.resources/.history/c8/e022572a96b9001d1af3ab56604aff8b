@@ -1,0 +1,5 @@
+package com.mbi.camundaservicetask.service;
+
+public class OrderValidate {
+
+}

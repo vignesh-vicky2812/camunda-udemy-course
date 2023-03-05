@@ -1,0 +1,4 @@
+com\mbi\hellospringbootapp\ProcessScenarioTest.class
+com\mbi\hellospringbootapp\InMemoryH2Test.class
+com\mbi\hellospringbootapp\ProcessUnitTest.class
+com\mbi\hellospringbootapp\ProcessTestCoverageProcessEnginePlugin.class

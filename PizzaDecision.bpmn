@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1xx2orm" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.9.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_133cu2f" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0l9wdjd</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0l9wdjd" sourceRef="StartEvent_1" targetRef="Activity_1r53mo0" />
+    <bpmn:sequenceFlow id="Flow_13auepy" sourceRef="Activity_1r53mo0" targetRef="Activity_1h56wed" />
+    <bpmn:sequenceFlow id="Flow_0ezbmlt" sourceRef="Activity_1h56wed" targetRef="Activity_0ekbaje" />
+    <bpmn:sequenceFlow id="Flow_17oqikc" sourceRef="Activity_0ekbaje" targetRef="Activity_1k8ltj6" />
+    <bpmn:endEvent id="Event_0hp8zg8">
+      <bpmn:incoming>Flow_0eeqnhs</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0eeqnhs" sourceRef="Activity_1k8ltj6" targetRef="Event_0hp8zg8" />
+    <bpmn:userTask id="Activity_1r53mo0" name="Enter Pizza Details">
+      <bpmn:incoming>Flow_0l9wdjd</bpmn:incoming>
+      <bpmn:outgoing>Flow_13auepy</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:scriptTask id="Activity_0ekbaje" name="Calculate cost">
+      <bpmn:incoming>Flow_0ezbmlt</bpmn:incoming>
+      <bpmn:outgoing>Flow_17oqikc</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:userTask id="Activity_1k8ltj6" name="Pay the cost">
+      <bpmn:incoming>Flow_17oqikc</bpmn:incoming>
+      <bpmn:outgoing>Flow_0eeqnhs</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:businessRuleTask id="Activity_1h56wed" name="Calculate cost of your total pizza" camunda:resultVariable="cost" camunda:decisionRef="PizzaSelection" camunda:mapDecisionResult="singleEntry">
+      <bpmn:incoming>Flow_13auepy</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ezbmlt</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:textAnnotation id="TextAnnotation_1dt8doe">
+      <bpmn:text>Enter inputs pizzaType, topping and cheese</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_10qi99u" sourceRef="Activity_1r53mo0" targetRef="TextAnnotation_1dt8doe" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_133cu2f">
+      <bpmndi:BPMNShape id="TextAnnotation_1dt8doe_di" bpmnElement="TextAnnotation_1dt8doe">
+        <dc:Bounds x="370" y="50" width="100" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0l9wdjd_di" bpmnElement="Flow_0l9wdjd">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13auepy_di" bpmnElement="Flow_13auepy">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="430" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ezbmlt_di" bpmnElement="Flow_0ezbmlt">
+        <di:waypoint x="530" y="177" />
+        <di:waypoint x="590" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17oqikc_di" bpmnElement="Flow_17oqikc">
+        <di:waypoint x="690" y="177" />
+        <di:waypoint x="750" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0eeqnhs_di" bpmnElement="Flow_0eeqnhs">
+        <di:waypoint x="850" y="177" />
+        <di:waypoint x="912" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0hp8zg8_di" bpmnElement="Event_0hp8zg8">
+        <dc:Bounds x="912" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0dvle0m_di" bpmnElement="Activity_1r53mo0">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0f4kdqs_di" bpmnElement="Activity_0ekbaje">
+        <dc:Bounds x="590" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15ct5z8_di" bpmnElement="Activity_1k8ltj6">
+        <dc:Bounds x="750" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14sb9he_di" bpmnElement="Activity_1h56wed">
+        <dc:Bounds x="430" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_10qi99u_di" bpmnElement="Association_10qi99u">
+        <di:waypoint x="356" y="137" />
+        <di:waypoint x="373" y="118" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

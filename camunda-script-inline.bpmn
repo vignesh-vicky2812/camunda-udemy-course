@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0o3l7s9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.9.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="camunda-script-inline" name="camunda-script-inline" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1vnw2q0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1vnw2q0" sourceRef="StartEvent_1" targetRef="Activity_0ffckdm" />
+    <bpmn:scriptTask id="Activity_0ffckdm" name="Order initializer" scriptFormat="groovy">
+      <bpmn:incoming>Flow_1vnw2q0</bpmn:incoming>
+      <bpmn:outgoing>Flow_11goiya</bpmn:outgoing>
+      <bpmn:script>def name="Vignesh"
+execution.setVariable("name",name)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_11goiya" sourceRef="Activity_0ffckdm" targetRef="Activity_0ituso0" />
+    <bpmn:userTask id="Activity_0ituso0" name="Ship the order" camunda:assignee="demo">
+      <bpmn:incoming>Flow_11goiya</bpmn:incoming>
+      <bpmn:outgoing>Flow_0k88hlb</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_0sfo605">
+      <bpmn:incoming>Flow_0k88hlb</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0k88hlb" sourceRef="Activity_0ituso0" targetRef="Event_0sfo605" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="camunda-script-inline">
+      <bpmndi:BPMNEdge id="Flow_1vnw2q0_di" bpmnElement="Flow_1vnw2q0">
+        <di:waypoint x="188" y="117" />
+        <di:waypoint x="240" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11goiya_di" bpmnElement="Flow_11goiya">
+        <di:waypoint x="340" y="117" />
+        <di:waypoint x="400" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0k88hlb_di" bpmnElement="Flow_0k88hlb">
+        <di:waypoint x="500" y="117" />
+        <di:waypoint x="562" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05641w1_di" bpmnElement="Activity_0ffckdm">
+        <dc:Bounds x="240" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0epho6e_di" bpmnElement="Activity_0ituso0">
+        <dc:Bounds x="400" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0sfo605_di" bpmnElement="Event_0sfo605">
+        <dc:Bounds x="562" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

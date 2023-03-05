@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0dn4dtc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.9.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_0hnvudm" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Process started">
+      <bpmn:outgoing>Flow_0cbidxs</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0cbidxs" sourceRef="StartEvent_1" targetRef="Activity_1er780o" />
+    <bpmn:scriptTask id="Activity_1er780o" name="Request" scriptFormat="groovy" camunda:resource="request.groovy">
+      <bpmn:incoming>Flow_0cbidxs</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xmx115</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_1xmx115" sourceRef="Activity_1er780o" targetRef="Activity_0mbesp9" />
+    <bpmn:serviceTask id="Activity_0mbesp9" name="Validator ST" camunda:class="com.service.HelloService">
+      <bpmn:incoming>Flow_1xmx115</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hhc3ed</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0hhc3ed" sourceRef="Activity_0mbesp9" targetRef="Activity_0xq5f3h" />
+    <bpmn:endEvent id="Event_0l0akyp" name="Process ended">
+      <bpmn:incoming>Flow_1jo3sn6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1jo3sn6" sourceRef="Activity_0xq5f3h" targetRef="Event_0l0akyp" />
+    <bpmn:userTask id="Activity_0xq5f3h" name="Approval">
+      <bpmn:incoming>Flow_0hhc3ed</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jo3sn6</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0hnvudm">
+      <bpmndi:BPMNEdge id="Flow_1jo3sn6_di" bpmnElement="Flow_1jo3sn6">
+        <di:waypoint x="680" y="117" />
+        <di:waypoint x="732" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hhc3ed_di" bpmnElement="Flow_0hhc3ed">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="580" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xmx115_di" bpmnElement="Flow_1xmx115">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cbidxs_di" bpmnElement="Flow_0cbidxs">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="159" y="142" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1pgb3yj_di" bpmnElement="Activity_1er780o">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10xgjn1_di" bpmnElement="Activity_0mbesp9">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0l0akyp_di" bpmnElement="Event_0l0akyp">
+        <dc:Bounds x="732" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="713" y="142" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0g39139_di" bpmnElement="Activity_0xq5f3h">
+        <dc:Bounds x="580" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
